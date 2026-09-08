@@ -24,10 +24,10 @@ st.subheader("Model Performance")
 
 col1, col2, col3, col4 = st.columns(4)
 
-col1.metric("Accuracy, 99.95%")
-col2.metric("Precision, 97.06%")
-col3.metric("Recall, 73.33%")
-col4.metric("F1 Score, 83.54%")
+col1.metric("Accuracy", "99.95%")
+col2.metric("Precision", "97.06%")
+col3.metric("Recall", "73.33%")
+col4.metric("F1 Score", "83.54%")
 
 st.sidebar.title("Navigation")
 page = st.sidebar.radio(
