@@ -30,7 +30,7 @@ if uploaded_file is not None:
 
     st.subheader("Uploaded Data")
 
-    st.dataframe(uploaded_data.head)
+    st.dataframe(uploaded_data.head())
 
 if st.button("Predict Fraud"):
     predictions = model.predict(uploaded_data)
