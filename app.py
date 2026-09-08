@@ -18,7 +18,7 @@ st.markdown(
     """
     ### Spot Fraud Before It Costs You
     Real-Time Credit Card Transaction Risk Analysis using a trained Random Forest model.
-    Upload transaction data and instantly identify suspicious activities.
+    \nUpload transaction data and instantly identify suspicious activities.
     """
 )
 
