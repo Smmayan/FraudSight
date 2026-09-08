@@ -2,23 +2,38 @@ import streamlit as st
 import pickle
 import pandas as pd
 
+st.set_page_config(
+    page_title="Fraud Detection System",
+    page_icon="🚨",
+    layout="wide"
+)
+
 model = pickle.load(
     open("models/fraud_model.pkl", "rb")
 )
 
-st.title("Credit Card Fraud Detection System")
+st.title("🚨 Credit Card Fraud Detection System")
 st.markdown(
     """
-    Upload a transaction dataset and indentify potentially fraudulent transactions using a trained Random Forest Model.
+   Real-Time Credit Card Transaction Risk Analysis using a trained Random Forest model.
+   Upload transaction data and instantly identify suspicious activities.
     """
 )
 
 st.subheader("Model Performance")
-st.write("Algorithm: Random Forest")
-st.write("Accuracy: 99.95%")
-st.write("Precision: 97.06%")
-st.write("Recall: 73.33%")
-st.write("F1 Score: 83.54%")
+
+col1, col2, col3, col4 = st.columns(4)
+
+col1.metric("Accuracy: 99.95%")
+col2.metric("Precision: 97.06%")
+col3.metric("Recall: 73.33%")
+col4.metric("F1 Score: 83.54%")
+
+st.sidebar.title("Navigation")
+page = st.sidebar.radio(
+    "Go To",
+    ["Home", "Fraud Detection"]
+)
 
 uploaded_file = st.file_uploader(
     "Upload Transaction CSV File",
@@ -44,6 +59,8 @@ if st.button("Predict Fraud"):
 
     predictions = model.predict(uploaded_data)
 
+    st.success("✅ Prediction Completed Successfully!")
+
     uploaded_data["Fraud_Prediction"] = predictions
 
     fraud_count = (
@@ -58,8 +75,8 @@ if st.button("Predict Fraud"):
     st.dataframe(uploaded_data.head())
 
     st.subheader("Prediction Summary")
-    st.write(f"Fraud Transactions: {fraud_count}")
-    st.write(f"Genuine Transactions: {genuine_count}")
+    st.error(f"🚨 Fraud Transactions: {fraud_count}")
+    st.success(f"✅ Genuine Transactions: {genuine_count}")
 
     fraud_transactions = uploaded_data[
         uploaded_data["Fraud_Prediction"] == 1
@@ -76,3 +93,9 @@ if st.button("Predict Fraud"):
         file_name = "fraud_predictions.csv",
         mime = "text/csv"
     )
+
+
+# Footer
+st.markdown("---")
+
+st.markdown("Developed by **Smmayan Gupta** | Machine Learning Project")
