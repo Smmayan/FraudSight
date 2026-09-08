@@ -2,7 +2,7 @@
 
 ### Spot Fraud Before It Costs You
 
-FraudSight is a Machine Learning-powered fraud detection dashboard that analyzes credit card transaction data and identifies potentially fraudulent transactions using a trained Random Forest model.
+FraudSight is a Machine Learning-powered fraud detection dashboard that analyzes credit card transaction data and identifies potentially fraudulent transactions using a trained Random Forest Machine Learning model.
 
 🌐 **Live Demo:**
 https://fraud-detection-system-smmayan.streamlit.app
