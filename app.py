@@ -33,6 +33,10 @@ if uploaded_file is not None:
     st.dataframe(uploaded_data.head())
 
 if st.button("Predict Fraud"):
+
+    if "Class" in uploaded_data.columns:
+        uploaded_data = uploaded_data.drop(columns = ["Class"])
+
     predictions = model.predict(uploaded_data)
 
     uploaded_data["Fraud_Prediction"] = predictions
