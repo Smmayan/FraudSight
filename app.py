@@ -4,8 +4,8 @@ import pandas as pd
 import plotly.express as px
 
 st.set_page_config(
-    page_title="Fraud Detection System",
-    page_icon="🚨",
+    page_title="FraudSight",
+    page_icon="👁️",
     layout="wide"
 )
 
@@ -13,12 +13,33 @@ model = pickle.load(
     open("models/fraud_model.pkl", "rb")
 )
 
-st.title("🚨 Credit Card Fraud Detection System")
+st.title("👁️ FraudSight")
 st.markdown(
     """
-   Real-Time Credit Card Transaction Risk Analysis using a trained Random Forest model.
-   Upload transaction data and instantly identify suspicious activities.
+    ### Spot Fraud Before It Costs You
+    Real-Time Credit Card Transaction Risk Analysis using a trained Random Forest model.
+    Upload transaction data and instantly identify suspicious activities.
     """
+)
+
+with st.expander("ℹ️ About FraudSight"):
+    st.write(
+        """
+        FraudSight is a machine learning-powered fraud
+        detection dashboard that identifies suspicious
+        credit card transactions.
+
+        Models Tested:
+        • Logistic Regression
+        • Random Forest
+        • XGBoost
+
+        Final Model:
+        • Random Forest
+
+        Accuracy:
+        • 99.95%
+        """
 )
 
 st.subheader("Model Performance")
@@ -30,7 +51,7 @@ col2.metric("Precision", "97.06%")
 col3.metric("Recall", "73.33%")
 col4.metric("F1 Score", "83.54%")
 
-st.sidebar.title("Navigation")
+st.sidebar.title("👁️ FraudSight") 
 page = st.sidebar.radio(
     "Go To",
     ["Home", "Fraud Detection"]
