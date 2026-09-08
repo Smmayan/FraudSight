@@ -37,6 +37,11 @@ if st.button("Predict Fraud"):
     if "Class" in uploaded_data.columns:
         uploaded_data = uploaded_data.drop(columns = ["Class"])
 
+        expected_columns = list(model.feature_names_in_)
+        if list(uploaded_data.columns) != expected_columns:
+            st.error("Please upload a file with the correct columns")
+            st.stop()
+
     predictions = model.predict(uploaded_data)
 
     uploaded_data["Fraud_Prediction"] = predictions
