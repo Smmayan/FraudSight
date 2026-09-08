@@ -13,6 +13,7 @@ model = pickle.load(
     open("models/fraud_model.pkl", "rb")
 )
 
+# Logo
 st.image(
     "assets/logo.png",
     width = 200
