@@ -13,6 +13,11 @@ model = pickle.load(
     open("models/fraud_model.pkl", "rb")
 )
 
+st.image(
+    "assets/logo.png",
+    width = 200
+    )
+
 st.title("👁️ FraudSight")
 st.markdown(
     """
