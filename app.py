@@ -88,7 +88,8 @@ if st.button("Predict Fraud"):
     fig = px.pie(
     values=chart_data["Count"],
     names=chart_data["Type"],
-    title="Fraud vs Genuine Transactions"
+    title="Fraud vs Genuine Transactions",
+    hole = 0.5
     )
 
     st.plotly_chart(fig)
