@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import plotly.express as px
 
 st.set_page_config(
     page_title="Fraud Detection System",
@@ -77,6 +78,20 @@ if st.button("Predict Fraud"):
     st.subheader("Prediction Summary")
     st.error(f"🚨 Fraud Transactions: {fraud_count}")
     st.success(f"✅ Genuine Transactions: {genuine_count}")
+
+    # PIE CHART
+    chart_data = {
+    "Type": ["Fraud", "Genuine"],
+    "Count": [fraud_count, genuine_count]
+    }
+
+    fig = px.pie(
+    values=chart_data["Count"],
+    names=chart_data["Type"],
+    title="Fraud vs Genuine Transactions"
+    )
+
+    st.plotly_chart(fig)
 
     fraud_transactions = uploaded_data[
         uploaded_data["Fraud_Prediction"] == 1
